@@ -1,14 +1,14 @@
 // From Material-ui nextjs sample https://github.com/mui-org/material-ui/tree/master/examples/nextjs
 
-import React from 'react';
-import PropTypes from 'prop-types';
-import Head from 'next/head';
-import { useRouter } from 'next/router';
-import { ThemeProvider } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
+import React from "react";
+import PropTypes from "prop-types";
+import Head from "next/head";
+import { useRouter } from "next/router";
+import { ThemeProvider } from "@mui/material/styles";
+import CssBaseline from "@mui/material/CssBaseline";
 import { CacheProvider } from "@emotion/react";
 import createEmotionCache from "../src/styles/createEmotionCache";
-import theme from '../src/styles/theme';
+import theme from "../src/styles/theme";
 
 import { MsalProvider } from "@azure/msal-react";
 import { PublicClientApplication, EventType } from "@azure/msal-browser";
@@ -37,7 +37,11 @@ msalInstance.initialize().then(() => {
   });
 });
 
-export default function MyApp({ Component, emotionCache = clientSideEmotionCache, pageProps }) {
+export default function MyApp({
+  Component,
+  emotionCache = clientSideEmotionCache,
+  pageProps,
+}) {
   // The next 3 lines are optional. This is how you configure MSAL to take advantage of the router's navigate functions when MSAL redirects between pages in your app
   const router = useRouter();
   const navigationClient = new CustomNavigationClient(router);
@@ -47,17 +51,20 @@ export default function MyApp({ Component, emotionCache = clientSideEmotionCache
     <CacheProvider value={emotionCache}>
       <Head>
         <title>MSAL-React Next.js Sample</title>
-        <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
+        <meta
+          name="viewport"
+          content="minimum-scale=1, initial-scale=1, width=device-width"
+        />
       </Head>
       <ThemeProvider theme={theme}>
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
         <CssBaseline />
         <MsalProvider instance={msalInstance}>
-            <PageLayout>
-              <Grid container justifyContent="center">
-                <Component {...pageProps} />
-              </Grid>
-            </PageLayout>
+          <PageLayout>
+            <Grid container justifyContent="center">
+              <Component {...pageProps} />
+            </Grid>
+          </PageLayout>
         </MsalProvider>
       </ThemeProvider>
     </CacheProvider>
