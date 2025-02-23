@@ -10,10 +10,10 @@ export const msalConfig = {
     allowPlatformBroker: false, // Disables WAM Broker
   },
 };
-
+const t = process.env.NEXT_PUBLIC_MSAL_SCOPE || "";
 // Add here scopes for id token to be used at MS Identity Platform endpoints.
 export const loginRequest = {
-  scopes: ["User.Read", "" + process.env.NEXT_PUBLIC_MSAL_SCOPE],
+  scopes: ["User.Read", t],
 };
 
 // Add here the endpoints for MS Graph API services you would like to use.
