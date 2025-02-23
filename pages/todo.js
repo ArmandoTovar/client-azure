@@ -12,7 +12,7 @@ import {
 import DeleteIcon from "@mui/icons-material/Delete";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 
-const API_URL = process.env.VITE_API_URL;
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 const TodoApp = () => {
   const [todos, setTodos] = useState([]);
